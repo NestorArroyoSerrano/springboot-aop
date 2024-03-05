@@ -53,7 +53,7 @@ public class GreetingAspect {
     }
 
     @Around("execution(* com.nestor.curso.springboot.app.aop.springbootaop.services.*.*(..))")
-    public Object loggerAround(ProceedingJoinPoint joinPoint) {
+    public Object loggerAround(ProceedingJoinPoint joinPoint) throws Throwable {
 
         String method = joinPoint.getSignature().getName();
         String args = Arrays.toString(joinPoint.getArgs());
@@ -61,14 +61,17 @@ public class GreetingAspect {
 
         Object result = null;
         try {
-            result = joinPoint.proceed();
 
-            
+            logger.info("El metodo" + method + "() con los parametros" + args);
+            result = joinPoint.proceed();
+            logger.info("El metodo " + method + "() retorna el resultado: " + result);
+
             return result;
-        } catch (Throwable e) {
-           
+        } catch (Throwable e) {          
+            logger.error("Error en la llamada del metodo " + method + "()");
+            throw e;
         }
-        return result;
+       // return result;
     }
     
     
