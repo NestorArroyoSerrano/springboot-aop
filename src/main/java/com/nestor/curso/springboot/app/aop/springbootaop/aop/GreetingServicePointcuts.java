@@ -1,4 +1,4 @@
-package com.nestor.curso.springboot.app.aop.springbootaop;
+package com.nestor.curso.springboot.app.aop.springbootaop.aop;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 public class GreetingServicePointcuts {
 
     @Pointcut("execution(* com.nestor.curso.springboot.app.aop.springbootaop.services.GreetingService.*(..))")
-    private void greetingLoggerPointCut() {
+    public void greetingLoggerPointCut() {
 
     }
     @Pointcut("execution(* com.nestor.curso.springboot.app.aop.springbootaop.services.GreetingService.*(..))")
-    private void greetingFooLoggerPointcut() {
+    public void greetingFooLoggerPointcut() {
 
     }
 }

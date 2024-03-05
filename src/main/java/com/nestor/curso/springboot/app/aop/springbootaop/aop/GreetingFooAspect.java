@@ -18,14 +18,14 @@ public class GreetingFooAspect {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Before("greetingFooLoggerPointcut()")
+    @Before("GreetingServicePointcuts.greetingLoggerPointCut()")
     public void loggerBefore(JoinPoint joinPoint) {
 
         String method = joinPoint.getSignature().getName();
         String args = Arrays.toString(joinPoint.getArgs());
         logger.info("Antes Primero: " + method + " invocado con los parametros " + args);
     }
-    @After("greetingFooLoggerPointcut()")
+    @After("GreetingServicePointcuts.greetingLoggerPointCut()")
     public void loggerAfter(JoinPoint joinPoint) {
 
         String method = joinPoint.getSignature().getName();

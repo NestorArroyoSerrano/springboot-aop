@@ -1,4 +1,4 @@
-package com.nestor.curso.springboot.app.aop.springbootaop;
+package com.nestor.curso.springboot.app.aop.springbootaop.aop;
 
 import java.util.Arrays;
 
@@ -23,7 +23,7 @@ public class GreetingAspect {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Before("greetingLoggerPointCut()")
+    @Before("GreetingServicePointcuts.greetingLoggerPointCut()")
     public void loggerBefore(JoinPoint joinPoint) {
 
         String method = joinPoint.getSignature().getName();
@@ -31,7 +31,7 @@ public class GreetingAspect {
         logger.info("Antes: " + method + " con los argumentos " + args);
     }
 
-    @After("greetingLoggerPointCut()")
+    @After("GreetingServicePointcuts.greetingLoggerPointCut()")
     public void loggerAfter(JoinPoint joinPoint) {
 
         String method = joinPoint.getSignature().getName();
@@ -39,14 +39,14 @@ public class GreetingAspect {
         logger.info("Despues: " + method + " con los argumentos " + args);
     }
 
-    @AfterReturning("greetingLoggerPointCut()")
+    @AfterReturning("GreetingServicePointcuts.greetingLoggerPointCut()")
     public void loggerAfterReturning(JoinPoint joinPoint) {
 
         String method = joinPoint.getSignature().getName();
         String args = Arrays.toString(joinPoint.getArgs());
         logger.info("Despues de retornar: " + method + " con los argumentos " + args);
     }
-    @AfterThrowing("greetingLoggerPointCut()")
+    @AfterThrowing("GreetingServicePointcuts.greetingLoggerPointCut()")
     public void loggerAfterThrowing(JoinPoint joinPoint) {
 
         String method = joinPoint.getSignature().getName();
@@ -54,7 +54,7 @@ public class GreetingAspect {
         logger.info("Despues de lanzar la excepcion: " + method + " con los argumentos " + args);
     }
 
-    @Around("greetingLoggerPointCut()")
+    @Around("GreetingServicePointcuts.greetingLoggerPointCut()")
     public Object loggerAround(ProceedingJoinPoint joinPoint) throws Throwable {
 
         String method = joinPoint.getSignature().getName();
