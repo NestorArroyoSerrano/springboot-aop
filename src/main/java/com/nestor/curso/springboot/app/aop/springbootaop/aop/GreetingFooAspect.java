@@ -18,8 +18,6 @@ public class GreetingFooAspect {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
- 
-
     @Before("greetingFooLoggerPointcut()")
     public void loggerBefore(JoinPoint joinPoint) {
 
